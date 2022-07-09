@@ -1,0 +1,46 @@
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  font-size: 2vw;
+  font-weight: 500;
+  color: #00b;
+  text-decoration: underline;
+}
+
+.container {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  font-size: 14px;
+  background-color: #f6f6f6;
+  color: #303030;
+}
+
+.heading {
+  font-size: 3.33vw;
+  padding: 0 4vw;
+  text-align: center;
+}
+
+.link {
+  font-size: 2vw;
+  font-weight: 500;
+  color: #00b;
+  text-decoration: underline;
+}
+
+.link:hover,
+.link:active {
+  color: #303030;
+}
+
+@media screen and (max-width: 768px) {
+  .heading {
+    font-size: 6vw;
+  }
+
+  .link {
+    font-size: 4.5vw;
+  }
+}
