@@ -395,7 +395,7 @@ footer .footer_discl {
 ===============================*/
 
 .home_meetplayers {
-  background: #ffffff url("../images/stripes.png");
+  background: #ffffff url("../public/assets/icons/stripes.png");
 }
 
 .home_meetplayers_wrapper {
@@ -526,7 +526,7 @@ footer .footer_discl {
 }
 
 .promotion_wrapper .jersey {
-  background: url("../images/jersey.jpg") no-repeat;
+  background: url("../public/assets/images/players/jersey.jpg") no-repeat;
 }
 
 /*=============================
@@ -659,7 +659,7 @@ footer .footer_discl {
   padding: 20px;
   background-size: 5px 5px !important;
   min-height: 100vh;
-  background: #ffffff url("../images/stripes.png");
+  background: #ffffff url("../public/assets/icons/stripes.png");
 }
 
 .team_category_wrapper .title {
