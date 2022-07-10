@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { AppBar, Toolbar, Button } from "@mui/material";
+import Logo from "./common/Logo";
 
 const Header = () => {
   const style = {
@@ -13,7 +14,9 @@ const Header = () => {
     <AppBar position="fixed" style={style}>
       <Toolbar style={{ display: "flex" }}>
         <div style={{ flexGrow: 1 }}>
-          <div className="header_logo">logo</div>
+          <div className="header_logo">
+            <Logo link={true} linkTo={"/"} width="70px" height="70px" />
+          </div>
         </div>
 
         <Link to="/team">
