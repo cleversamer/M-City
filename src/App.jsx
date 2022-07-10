@@ -1,7 +1,10 @@
 import { Fragment } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
+
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
+import Login from "./pages/Login";
+
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
@@ -11,6 +14,7 @@ const App = () => {
       <Header />
 
       <Routes>
+        <Route path="/login" element={<Login />} />
         <Route path="/not-found" element={<NotFound />} />
         <Route path="/" element={<Home />} />
         <Route path="*" element={<Navigate to="/not-found" replace />} />
