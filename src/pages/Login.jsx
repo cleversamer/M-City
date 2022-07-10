@@ -15,7 +15,7 @@ const SignIn = () => {
       email: Yup.string()
         .email("Invalid email address")
         .required("The email is required"),
-      password: Yup.string().required("The email is required"),
+      password: Yup.string().required("The password is required"),
     }),
     onSubmit: (values) => {
       setLoading(true);
