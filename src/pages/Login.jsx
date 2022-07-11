@@ -1,9 +1,18 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+import { auth } from "../firebase";
+import { authUser } from "../store/user";
+import { signInWithEmailAndPassword } from "firebase/auth";
+
 import { CircularProgress } from "@mui/material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
 const SignIn = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
   const formik = useFormik({
@@ -17,11 +26,25 @@ const SignIn = () => {
         .required("The email is required"),
       password: Yup.string().required("The password is required"),
     }),
-    onSubmit: (values) => {
+    onSubmit: (credentials) => {
       setLoading(true);
-      console.log(values);
+      handleSignIn(credentials);
     },
   });
+
+  const handleSignIn = (credentials) => {
+    signInWithEmailAndPassword(auth, credentials.email, credentials.password)
+      .then((res) => {
+        // show success toast
+        dispatch(authUser(credentials));
+        // navigate("/dashboard");
+      })
+      .catch((err) => {
+        setLoading(false);
+        alert(err.message);
+        /// show toasts
+      });
+  };
 
   return (
     // <div className="container">
