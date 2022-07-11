@@ -9,7 +9,9 @@ const Blocks = () => {
 
   useEffect(() => {
     const unsubscribe = onSnapshot(matchesQuery, (snapshot) => {
-      const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      const data = snapshot.docs
+        .slice(0, 6)
+        .map((doc) => ({ id: doc.id, ...doc.data() }));
       setMatches(data);
     });
 

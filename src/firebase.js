@@ -19,7 +19,7 @@ const db = getFirestore();
 const matchesRef = collection(db, "/matches");
 const playersRef = collection(db, "/players");
 const positionsRef = collection(db, "/positions");
-const promotionsRef = collection(db, "/promotions");
+export const promotionsRef = collection(db, "/promotions");
 const teamsRef = collection(db, "/teams");
 
 export const matchesQuery = query(matchesRef);
