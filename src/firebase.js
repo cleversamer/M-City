@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, collection } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 const config = {
@@ -15,5 +15,11 @@ const config = {
 const app = initializeApp(config);
 
 const db = getFirestore();
+
+const matchesRef = collection(db, "/matches");
+const playersRef = collection(db, "/players");
+const positionsRef = collection(db, "/positions");
+const promotionsRef = collection(db, "/promotions");
+const teamsRef = collection(db, "/teams");
 
 export const auth = getAuth(app);
