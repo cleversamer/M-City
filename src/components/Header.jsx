@@ -1,14 +1,11 @@
 import { Link } from "react-router-dom";
 
-import { auth } from "../firebase";
-import { signOut } from "firebase/auth";
-
 import { useSelector, useDispatch } from "react-redux";
-import { selectUser, logoutUser } from "../store/user";
+import { selectUser } from "../store/user";
+import { handleSignout } from "../utils/auth";
 
 import { AppBar, Toolbar, Button } from "@mui/material";
 import Logo from "./common/Logo";
-import * as toast from "../utils/toast";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -19,17 +16,6 @@ const Header = () => {
     boxShadow: "none",
     paddin: "10px 0",
     borderBottom: "2px solid #00285e",
-  };
-
-  const handleSignout = () => {
-    signOut(auth)
-      .then(() => {
-        dispatch(logoutUser());
-        toast.showSuccess("Good bye!");
-      })
-      .catch((err) => {
-        toast.showError(err.message);
-      });
   };
 
   return (
@@ -55,7 +41,7 @@ const Header = () => {
               <Button color="inherit">Dashboard</Button>
             </Link>
 
-            <Button color="inherit" onClick={handleSignout}>
+            <Button color="inherit" onClick={() => handleSignout(dispatch)}>
               Logout
             </Button>
           </>
