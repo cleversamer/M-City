@@ -1,11 +1,11 @@
-a {
+.container a {
   text-decoration: none;
   color: inherit;
   cursor: pointer;
   font-size: 2vw;
   font-weight: 500;
-  color: #00b;
-  text-decoration: underline;
+  color: #00b !important;
+  text-decoration: underline !important;
 }
 
 .container {
@@ -13,7 +13,6 @@ a {
   place-items: center;
   height: 100vh;
   font-size: 14px;
-  background-color: #f6f6f6;
   color: #303030;
 }
 

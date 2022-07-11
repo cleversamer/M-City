@@ -8,6 +8,7 @@ import { selectUser } from "./store/user";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
+import Dashboard from "./components/Dashboard";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -30,17 +31,26 @@ const App = ({ store }) => {
     <Fragment>
       <Header />
 
-      {!user && <Login />}
+      {!user && (
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/not-found" element={<NotFound />} />
+          <Route path="/" element={<Navigate to="/login" replace />} />
+          <Route path="*" element={<Navigate to="/not-found" replace />} />
+        </Routes>
+      )}
 
       {user && (
         <Routes>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/login" element={<Navigate to="/" replace />} />
           <Route path="/not-found" element={<NotFound />} />
           <Route path="/" element={<Home />} />
           <Route path="*" element={<Navigate to="/not-found" replace />} />
         </Routes>
       )}
 
-      <ToastContainer position="top-left" />
+      <ToastContainer />
 
       <Footer />
     </Fragment>
