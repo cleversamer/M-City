@@ -12,6 +12,9 @@ import Login from "./pages/Login";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const App = ({ store }) => {
   const user = useSelector(selectUser);
 
@@ -36,6 +39,8 @@ const App = ({ store }) => {
           <Route path="*" element={<Navigate to="/not-found" replace />} />
         </Routes>
       )}
+
+      <ToastContainer position="top-left" />
 
       <Footer />
     </Fragment>

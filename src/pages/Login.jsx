@@ -8,6 +8,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { CircularProgress } from "@mui/material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import * as toast from "../utils/toast";
 
 const SignIn = () => {
   const dispatch = useDispatch();
@@ -33,14 +34,12 @@ const SignIn = () => {
   const handleSignIn = (credentials) => {
     signInWithEmailAndPassword(auth, credentials.email, credentials.password)
       .then((res) => {
-        // show success toast
+        toast.showSuccess("Welcome!");
         dispatch(authUser(credentials));
-        // navigate("/dashboard");
       })
       .catch((err) => {
         setLoading(false);
-        alert(err.message);
-        /// show toasts
+        toast.showError(err.message);
       });
   };
 

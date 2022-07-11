@@ -8,6 +8,7 @@ import { selectUser, logoutUser } from "../store/user";
 
 import { AppBar, Toolbar, Button } from "@mui/material";
 import Logo from "./common/Logo";
+import * as toast from "../utils/toast";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -24,9 +25,10 @@ const Header = () => {
     signOut(auth)
       .then(() => {
         dispatch(logoutUser());
+        toast.showSuccess("Good bye!");
       })
       .catch((err) => {
-        console.log(err);
+        toast.showError(err.message);
       });
   };
 
