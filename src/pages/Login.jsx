@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 
 import { auth } from "../firebase";
 import { authUser } from "../store/user";
@@ -12,7 +11,6 @@ import * as Yup from "yup";
 
 const SignIn = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
   const formik = useFormik({
