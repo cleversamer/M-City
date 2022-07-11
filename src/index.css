@@ -19,6 +19,7 @@ a {
 
 .bck_blue {
   background: #0d1831;
+  overflow: hidden;
 }
 
 .bck_lblue {
@@ -175,9 +176,10 @@ footer .footer_discl {
 ===============================*/
 
 .featured_wrapper {
-  margin: 0 auto;
+  /* margin: 0 auto; */
   width: 1280px;
-  margin-top: 90px;
+  max-width: 100vw;
+  margin-top: 75px;
   height: 800px;
   overflow: hidden;
 }
