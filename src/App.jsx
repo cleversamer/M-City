@@ -10,6 +10,7 @@ import NotFound from "./pages/notFound";
 import Login from "./pages/login";
 import Dashboard from "./pages/admin/dashboard";
 import Players from "./pages/admin/players";
+import AddEditPlayer from "./pages/admin/players/AddEditPlayer";
 
 import Header from "./components/header";
 import Footer from "./components/footer";
@@ -20,6 +21,15 @@ import config from "./config.json";
 
 const App = ({ store }) => {
   const user = useSelector(selectUser);
+  const adminRoutes = [
+    <Route path={config.routes.adminPlayers} element={<Players />} />,
+    <Route path={config.routes.dashboard} element={<Dashboard />} />,
+    <Route path={config.routes.addPlayer} element={<AddEditPlayer />} />,
+    <Route
+      path={`${config.routes.editPlayer.path}`}
+      element={<AddEditPlayer />}
+    />,
+  ];
 
   useEffect(() => {
     const unsubscribe = store.subscribe(() => {});
@@ -34,12 +44,7 @@ const App = ({ store }) => {
       <Header />
 
       <Routes>
-        {user && (
-          <Route path={config.routes.adminPlayers} element={<Players />} />
-        )}
-        {user && (
-          <Route path={config.routes.dashboard} element={<Dashboard />} />
-        )}
+        {user && adminRoutes}
         <Route path={config.routes.login} element={<Login />} />
         <Route path={config.routes.notFound} element={<NotFound />} />
         <Route path={config.routes.home} element={<Home />} />

@@ -16,7 +16,10 @@
     "adminMatches": "/admin_matches",
     "adminPlayers": "/admin_players",
     "addPlayer": "/admin_players/add_player",
-    "editPlayer": "/admin_players/edit_player",
+    "editPlayer": {
+      "route": "/admin_players/edit_player",
+      "path": "/admin_players/edit_player/:playerid"
+    },
     "notFound": "/not_found"
   }
 }

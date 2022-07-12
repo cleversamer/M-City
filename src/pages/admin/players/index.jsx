@@ -67,12 +67,16 @@ const AdminPlayers = () => {
               ? players.map((player, i) => (
                   <TableRow key={player.id}>
                     <TableCell>
-                      <Link to={`${config.routes.editPlayer}/${player.id}`}>
+                      <Link
+                        to={`${config.routes.editPlayer.route}/${player.id}`}
+                      >
                         {player.name}
                       </Link>
                     </TableCell>
                     <TableCell>
-                      <Link to={`${config.routes.editPlayer}/${player.id}`}>
+                      <Link
+                        to={`${config.routes.editPlayer.route}/${player.id}`}
+                      >
                         {player.lastname}
                       </Link>
                     </TableCell>

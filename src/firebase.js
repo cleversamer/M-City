@@ -14,10 +14,10 @@ const config = {
 
 const app = initializeApp(config);
 
-const db = getFirestore();
+export const db = getFirestore();
 
 const matchesRef = collection(db, "/matches");
-const playersRef = collection(db, "/players");
+export const playersRef = collection(db, "/players");
 const positionsRef = collection(db, "/positions");
 export const promotionsRef = collection(db, "/promotions");
 const teamsRef = collection(db, "/teams");
