@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
-import { selectUser } from "../../store/user";
+import { selectUser, logoutUser } from "../../store/user";
 import { handleSignout } from "../../utils/auth";
+import * as toast from "../../utils/toast";
 
 import { AppBar, Toolbar, Button } from "@mui/material";
 import Logo from "../common/Logo";
@@ -16,6 +17,18 @@ const Header = () => {
     boxShadow: "none",
     paddin: "10px 0",
     borderBottom: "2px solid #00285e",
+  };
+
+  const onSignout = () => {
+    handleSignout(
+      (res) => {
+        dispatch(logoutUser());
+        toast.showSuccess("Weclome!!!");
+      },
+      (err) => {
+        toast.showError("Invalid credentials.");
+      }
+    );
   };
 
   return (
@@ -35,16 +48,20 @@ const Header = () => {
           <Button color="inherit">Matches</Button>
         </Link>
 
-        {user && (
+        {user ? (
           <>
             <Link to="/dashboard">
               <Button color="inherit">Dashboard</Button>
             </Link>
 
-            <Button color="inherit" onClick={() => handleSignout(dispatch)}>
+            <Button color="inherit" onClick={onSignout}>
               Logout
             </Button>
           </>
+        ) : (
+          <Link to="/login">
+            <Button color="inherit">Login</Button>
+          </Link>
         )}
       </Toolbar>
     </AppBar>

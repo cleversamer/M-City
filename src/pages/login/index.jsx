@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-import { auth } from "../../firebase";
+import { handleSignIn } from "../../utils/auth";
 import { authUser } from "../../store/user";
-import { signInWithEmailAndPassword } from "firebase/auth";
 
 import { CircularProgress } from "@mui/material";
 import { useFormik } from "formik";
@@ -11,6 +11,7 @@ import * as Yup from "yup";
 import * as toast from "../../utils/toast";
 
 const SignIn = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
 
@@ -27,21 +28,20 @@ const SignIn = () => {
     }),
     onSubmit: (credentials) => {
       setLoading(true);
-      handleSignIn(credentials);
+      handleSignIn(
+        credentials,
+        (res) => {
+          dispatch(authUser(credentials));
+          toast.showSuccess("Welcome!");
+          navigate("/");
+        },
+        (err) => {
+          setLoading(false);
+          toast.showError(err.message);
+        }
+      );
     },
   });
-
-  const handleSignIn = (credentials) => {
-    signInWithEmailAndPassword(auth, credentials.email, credentials.password)
-      .then((res) => {
-        toast.showSuccess("Welcome!");
-        dispatch(authUser(credentials));
-      })
-      .catch((err) => {
-        setLoading(false);
-        toast.showError(err.message);
-      });
-  };
 
   return (
     // <div className="container">

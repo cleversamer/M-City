@@ -1,17 +1,12 @@
 import { auth } from "../firebase";
-import { signOut } from "firebase/auth";
+import { signOut, signInWithEmailAndPassword } from "firebase/auth";
 
-import { logoutUser } from "../store/user";
+export const handleSignout = (onSuccess, onError) => {
+  signOut(auth).then(onSuccess).catch(onError);
+};
 
-import * as toast from "./toast";
-
-export const handleSignout = (dispatch) => {
-  signOut(auth)
-    .then(() => {
-      dispatch(logoutUser());
-      toast.showSuccess("Good bye!");
-    })
-    .catch((err) => {
-      toast.showError(err.message);
-    });
+export const handleSignIn = (credentials, onSuccess, onError) => {
+  signInWithEmailAndPassword(auth, credentials.email, credentials.password)
+    .then(onSuccess)
+    .catch(onError);
 };

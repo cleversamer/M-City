@@ -8,8 +8,9 @@ import { selectUser } from "./store/user";
 import Home from "./pages/home";
 import NotFound from "./pages/notFound";
 import Login from "./pages/login";
+import Dashboard from "./pages/admin/dashboard";
+import Players from "./pages/admin/players";
 
-import Dashboard from "./pages/dashboard";
 import Header from "./components/header";
 import Footer from "./components/footer";
 
@@ -31,24 +32,14 @@ const App = ({ store }) => {
     <Fragment>
       <Header />
 
-      {!user && (
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/not-found" element={<NotFound />} />
-          <Route path="/" element={<Navigate to="/login" replace />} />
-          <Route path="*" element={<Navigate to="/not-found" replace />} />
-        </Routes>
-      )}
-
-      {user && (
-        <Routes>
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/login" element={<Navigate to="/" replace />} />
-          <Route path="/not-found" element={<NotFound />} />
-          <Route path="/" element={<Home />} />
-          <Route path="*" element={<Navigate to="/not-found" replace />} />
-        </Routes>
-      )}
+      <Routes>
+        {user && <Route path="/admin_players" element={<Players />} />}
+        {user && <Route path="/dashboard" element={<Dashboard />} />}
+        <Route path="/login" element={<Login />} />
+        <Route path="/not-found" element={<NotFound />} />
+        <Route path="/" element={<Home />} />
+        <Route path="*" element={<Navigate to="/not-found" replace />} />
+      </Routes>
 
       <ToastContainer />
 
