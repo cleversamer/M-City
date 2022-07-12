@@ -1,6 +1,6 @@
 import { easePolyOut } from "d3-ease";
 import Animate from "react-move/Animate";
-import PlayerCard from "../hoc/PlayerCard";
+import PlayerCard from "../../hoc/PlayerCard";
 
 let cards = [
   {

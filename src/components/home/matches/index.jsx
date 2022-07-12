@@ -1,4 +1,4 @@
-import Tag from "../hoc/Tag";
+import Tag from "../../../hoc/Tag";
 import Blocks from "./Blocks";
 
 const Matches = () => {

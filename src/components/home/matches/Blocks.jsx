@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { onSnapshot } from "firebase/firestore";
-import { matchesQuery } from "../firebase";
+import { matchesQuery } from "../../../firebase";
 import { Slide } from "react-awesome-reveal";
-import Match from "../hoc/Match";
+import Match from "../../../hoc/Match";
 
 const Blocks = () => {
   const [matches, setMatches] = useState([]);

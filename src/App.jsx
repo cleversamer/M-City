@@ -8,10 +8,10 @@ import { selectUser } from "./store/user";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
-import Dashboard from "./components/Dashboard";
 
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Dashboard from "./components/admin/Dashboard";
+import Header from "./components/header";
+import Footer from "./components/footer";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

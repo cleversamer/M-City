@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
-import { selectUser } from "../store/user";
-import { handleSignout } from "../utils/auth";
+import { selectUser } from "../../store/user";
+import { handleSignout } from "../../utils/auth";
 
 import { AppBar, Toolbar, Button } from "@mui/material";
-import Logo from "./common/Logo";
+import Logo from "../common/Logo";
 
 const Header = () => {
   const dispatch = useDispatch();

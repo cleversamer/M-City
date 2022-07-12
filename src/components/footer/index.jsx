@@ -1,4 +1,4 @@
-import Logo from "./common/Logo";
+import Logo from "../common/Logo";
 
 const Footer = () => {
   return (

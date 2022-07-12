@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Fade } from "react-awesome-reveal";
-import Tag from "../hoc/Tag";
+import Tag from "../../hoc/Tag";
 import PlayerCards from "./PlayerCards";
 
 let tagDefault = {

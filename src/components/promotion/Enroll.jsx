@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import { query, getDocs, addDoc, where } from "firebase/firestore";
-import { promotionsRef } from "../firebase";
+import { promotionsRef } from "../../firebase";
 import { CircularProgress } from "@mui/material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import * as toast from "../utils/toast";
+import * as toast from "../../utils/toast";
 
 const Enroll = () => {
   const [loading, setLoading] = useState(false);

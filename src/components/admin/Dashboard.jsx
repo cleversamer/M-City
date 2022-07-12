@@ -1,4 +1,4 @@
-import AdminLayout from "../hoc/AdminLayout";
+import AdminLayout from "../../hoc/AdminLayout";
 
 const Dashboard = () => {
   return (

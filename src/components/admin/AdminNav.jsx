@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { ListItem } from "@mui/material";
-import { handleSignout } from "../utils/auth";
+import { handleSignout } from "../../utils/auth";
 
 const AdminNav = () => {
   const dispatch = useDispatch();
