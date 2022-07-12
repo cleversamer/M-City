@@ -60,9 +60,11 @@ const Header = () => {
               <Button color="inherit">Dashboard</Button>
             </Link>
 
-            <Button color="inherit" onClick={onSignout}>
-              Logout
-            </Button>
+            <Link to={config.routes.home}>
+              <Button color="inherit" onClick={onSignout}>
+                Logout
+              </Button>
+            </Link>
           </>
         ) : (
           <Link to={config.routes.login}>
