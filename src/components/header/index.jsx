@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectUser, logoutUser } from "../../store/user";
 import { handleSignout } from "../../utils/auth";
 import * as toast from "../../utils/toast";
+import config from "../../config.json";
 
 import { AppBar, Toolbar, Button } from "@mui/material";
 import Logo from "../common/Logo";
@@ -23,10 +24,10 @@ const Header = () => {
     handleSignout(
       (res) => {
         dispatch(logoutUser());
-        toast.showSuccess("Weclome!!!");
+        toast.showSuccess(config.toasts.logout);
       },
       (err) => {
-        toast.showError("Invalid credentials.");
+        toast.showError(config.errors.logout);
       }
     );
   };
@@ -36,21 +37,26 @@ const Header = () => {
       <Toolbar style={{ display: "flex" }}>
         <div style={{ flexGrow: 1 }}>
           <div className="header_logo">
-            <Logo link={true} linkTo={"/"} width="70px" height="70px" />
+            <Logo
+              link={true}
+              linkTo={config.routes.home}
+              width="70px"
+              height="70px"
+            />
           </div>
         </div>
 
-        <Link to="/team">
+        <Link to={config.routes.team}>
           <Button color="inherit">The team</Button>
         </Link>
 
-        <Link to="/matches">
+        <Link to={config.routes.matches}>
           <Button color="inherit">Matches</Button>
         </Link>
 
         {user ? (
           <>
-            <Link to="/dashboard">
+            <Link to={config.routes.dashboard}>
               <Button color="inherit">Dashboard</Button>
             </Link>
 
@@ -59,7 +65,7 @@ const Header = () => {
             </Button>
           </>
         ) : (
-          <Link to="/login">
+          <Link to={config.routes.login}>
             <Button color="inherit">Login</Button>
           </Link>
         )}

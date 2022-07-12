@@ -4,6 +4,7 @@ import { ListItem } from "@mui/material";
 import { handleSignout } from "../../../utils/auth";
 import { logoutUser } from "../../../store/user";
 import * as toast from "../../../utils/toast";
+import config from "../../../config.json";
 
 const AdminNav = () => {
   const navigate = useNavigate();
@@ -12,11 +13,11 @@ const AdminNav = () => {
   const links = [
     {
       title: "Matches",
-      linkTo: "/admin_matches",
+      linkTo: config.routes.adminMatches,
     },
     {
       title: "Players",
-      linkTo: "/admin_players",
+      linkTo: config.routes.adminPlayers,
     },
   ];
 
@@ -33,11 +34,11 @@ const AdminNav = () => {
     handleSignout(
       (res) => {
         dispatch(logoutUser());
-        toast.showSuccess("Good bye!");
-        navigate("/");
+        toast.showSuccess(config.toasts.logout);
+        navigate(config.routes.home);
       },
       (err) => {
-        toast.showError(err.message);
+        toast.showError(config.errors.logout);
       }
     );
   };
@@ -46,7 +47,7 @@ const AdminNav = () => {
     <div>
       {renderItems()}
 
-      <Link to="/">
+      <Link to={config.routes.home}>
         <ListItem button className="admin_nav_link" onClick={onSignout}>
           Logout
         </ListItem>

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import { handleSignIn } from "../../utils/auth";
 import { authUser } from "../../store/user";
+import config from "../../config.json";
 
 import { CircularProgress } from "@mui/material";
 import { useFormik } from "formik";
@@ -32,12 +33,12 @@ const SignIn = () => {
         credentials,
         (res) => {
           dispatch(authUser(credentials));
-          toast.showSuccess("Welcome!");
-          navigate("/");
+          toast.showSuccess(config.toasts.login);
+          navigate(config.routes.home);
         },
         (err) => {
           setLoading(false);
-          toast.showError(err.message);
+          toast.showError(config.errors.login);
         }
       );
     },

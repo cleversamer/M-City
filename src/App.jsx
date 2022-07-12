@@ -16,6 +16,7 @@ import Footer from "./components/footer";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import config from "./config.json";
 
 const App = ({ store }) => {
   const user = useSelector(selectUser);
@@ -33,12 +34,23 @@ const App = ({ store }) => {
       <Header />
 
       <Routes>
-        {user && <Route path="/admin_players" element={<Players />} />}
-        {user && <Route path="/dashboard" element={<Dashboard />} />}
-        <Route path="/login" element={<Login />} />
-        <Route path="/not-found" element={<NotFound />} />
-        <Route path="/" element={<Home />} />
-        <Route path="*" element={<Navigate to="/not-found" replace />} />
+        {user && (
+          <Route path={config.routes.adminPlayers} element={<Players />} />
+        )}
+        {user && (
+          <Route path={config.routes.dashboard} element={<Dashboard />} />
+        )}
+        <Route path={config.routes.login} element={<Login />} />
+        <Route path={config.routes.notFound} element={<NotFound />} />
+        <Route path={config.routes.home} element={<Home />} />
+        <Route
+          path="/"
+          element={<Navigate to={config.routes.home} replace />}
+        />
+        <Route
+          path="*"
+          element={<Navigate to={config.routes.notFound} replace />}
+        />
       </Routes>
 
       <ToastContainer />

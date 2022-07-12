@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import config from "../../config.json";
 import "./index.css";
 
 const NotFound = () => {
@@ -8,7 +9,7 @@ const NotFound = () => {
         The requested URL was not found on this server.
       </h1>
 
-      <Link to="/">Back to the home page</Link>
+      <Link to={config.routes.home}>Back to the home page</Link>
     </div>
   );
 };

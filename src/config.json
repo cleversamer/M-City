@@ -1,0 +1,20 @@
+{
+  "toasts": {
+    "login": "Welcome!!!",
+    "logout": "Good bye!!!"
+  },
+  "errors": {
+    "login": "Invalid credentials!!!",
+    "logout": "Something went wrong. Please try again!"
+  },
+  "routes": {
+    "home": "/",
+    "login": "/login",
+    "team": "/team",
+    "matches": "/matches",
+    "dashboard": "/dashboard",
+    "adminMatches": "/admin_matches",
+    "adminPlayers": "/admin_players",
+    "notFound": "/not_found"
+  }
+}
