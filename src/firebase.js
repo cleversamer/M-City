@@ -23,5 +23,6 @@ export const promotionsRef = collection(db, "/promotions");
 const teamsRef = collection(db, "/teams");
 
 export const matchesQuery = query(matchesRef);
+export const playersQuery = query(playersRef);
 
 export const auth = getAuth(app);

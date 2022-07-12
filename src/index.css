@@ -40,6 +40,9 @@ a {
 .mb-5 {
   margin-bottom: 5px;
 }
+.mb-15 {
+  margin-bottom: 15px;
+}
 
 .promotion_wrapper input,
 .signin_wrapper input {
