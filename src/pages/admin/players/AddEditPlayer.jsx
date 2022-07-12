@@ -12,7 +12,8 @@ import {
 } from "@mui/material";
 
 import { doc, getDoc, addDoc, updateDoc } from "firebase/firestore";
-import { db, playersRef } from "../../../firebase";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { db, playersRef, storage } from "../../../firebase";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -33,54 +34,7 @@ const AddEditPlayers = () => {
   const [loading, setLoading] = useState(false);
   const [formType, setFormType] = useState("");
   const [values, setValues] = useState(defaultValues);
-
-  const formik = useFormik({
-    enableReinitialize: true,
-    initialValues: values,
-    validationSchema: Yup.object({
-      name: Yup.string().required("This input is required"),
-      lastname: Yup.string().required("This input is required"),
-      number: Yup.number()
-        .required("This input is required")
-        .min(0, "The minimum is cero")
-        .max(100, "The max is 100"),
-      position: Yup.string().required("This input is required"),
-    }),
-    onSubmit: (values) => {
-      submitForm(values);
-    },
-  });
-
-  const getDocRef = () =>
-    doc(db, `/players/${params[config.routes.editPlayer.param]}`);
-
-  const submitForm = (values) => {
-    let dataToSubmit = values;
-    setLoading(true);
-
-    if (formType === "add") {
-      addDoc(playersRef, dataToSubmit)
-        .then(() => {
-          toasts.showSuccess("Player added");
-          formik.resetForm();
-          navigate(config.routes.adminPlayers);
-        })
-        .catch((error) => {
-          toasts.showError(error.message);
-        });
-    } else {
-      updateDoc(getDocRef(), dataToSubmit)
-        .then(() => {
-          toasts.showSuccess("Player updated");
-        })
-        .catch((error) => {
-          toasts.showError(error);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
-    }
-  };
+  const [sharedImage, setSharedImage] = useState("");
 
   useEffect(() => {
     const param = params[config.routes.editPlayer.param];
@@ -103,12 +57,112 @@ const AddEditPlayers = () => {
     }
   }, [params[config.routes.editPlayer.param]]);
 
+  const formik = useFormik({
+    enableReinitialize: true,
+    initialValues: values,
+    validationSchema: Yup.object({
+      name: Yup.string().required("This input is required"),
+      lastname: Yup.string().required("This input is required"),
+      number: Yup.number()
+        .required("This input is required")
+        .min(0, "The minimum is cero")
+        .max(100, "The max is 100"),
+      position: Yup.string().required("This input is required"),
+    }),
+    onSubmit: (values) => {
+      submitForm(values);
+    },
+  });
+
+  const getDocRef = () => {
+    return doc(db, `/players/${params[config.routes.editPlayer.param]}`);
+  };
+
+  const submitForm = (values) => {
+    let dataToSubmit = values;
+    setLoading(true);
+
+    if (formType === "add") {
+      const storageRef = ref(
+        storage,
+        `/players/${params[config.routes.editPlayer.param]}`
+      );
+      const uploadTask = uploadBytesResumable(storageRef, sharedImage);
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {},
+        (err) => {
+          toasts.showError(err.message);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref)
+            .then((res) => {
+              setSharedImage(res);
+            })
+            .catch((err) => {
+              toasts.showError(err.message);
+            });
+        }
+      );
+
+      addDoc(playersRef, { ...dataToSubmit, image: sharedImage })
+        .then(() => {
+          if (!sharedImage) {
+            throw new Error("No image selected for the player.");
+          }
+
+          toasts.showSuccess("Player added");
+          formik.resetForm();
+          navigate(config.routes.adminPlayers);
+        })
+        .catch((error) => {
+          toasts.showError(error.message);
+        });
+    } else {
+      updateDoc(getDocRef(), dataToSubmit)
+        .then(() => {
+          toasts.showSuccess("Player updated");
+        })
+        .catch((error) => {
+          toasts.showError(error);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    }
+  };
+
+  const handleChange = (e) => {
+    const image = e.currentTarget.files[0];
+
+    if (!image) {
+      alert("Please select an image.");
+      return;
+    }
+
+    setSharedImage(image);
+  };
+
   return (
     <AdminLayout title={formType === "add" ? "Add player" : "Edit player"}>
       <div className="editplayers_dialog_wrapper">
         <div>
           <form onSubmit={formik.handleSubmit}>
-            image
+            {params[config.routes.editPlayer.param] ? (
+              <img
+                src={sharedImage}
+                alt={params[config.routes.editPlayer.param]}
+              />
+            ) : (
+              <input
+                type="file"
+                accept="image/png, image/jpeg, image/jpg, image/gif"
+                name="image"
+                id="file"
+                // style={{ display: "none" }}
+                onChange={handleChange}
+              />
+            )}
             <hr />
             <h4>Player info</h4>
             <div className="mb-5">

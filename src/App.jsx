@@ -22,10 +22,15 @@ import config from "./config.json";
 const App = ({ store }) => {
   const user = useSelector(selectUser);
   const adminRoutes = [
-    <Route path={config.routes.adminPlayers} element={<Players />} />,
-    <Route path={config.routes.dashboard} element={<Dashboard />} />,
-    <Route path={config.routes.addPlayer} element={<AddEditPlayer />} />,
+    <Route key={1} path={config.routes.adminPlayers} element={<Players />} />,
+    <Route key={2} path={config.routes.dashboard} element={<Dashboard />} />,
     <Route
+      key={3}
+      path={config.routes.addPlayer}
+      element={<AddEditPlayer />}
+    />,
+    <Route
+      key={4}
       path={`${config.routes.editPlayer.path}`}
       element={<AddEditPlayer />}
     />,

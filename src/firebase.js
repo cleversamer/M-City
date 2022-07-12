@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, query } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
+import { getStorage } from "firebase/storage";
 
 const config = {
   apiKey: process.env["REACT_APP_FIREBASE_API_KEY"],
@@ -26,3 +27,5 @@ export const matchesQuery = query(matchesRef);
 export const playersQuery = query(playersRef);
 
 export const auth = getAuth(app);
+
+export const storage = getStorage(app);
