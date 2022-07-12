@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { auth } from "../firebase";
-import { authUser } from "../store/user";
+import { auth } from "../../firebase";
+import { authUser } from "../../store/user";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 import { CircularProgress } from "@mui/material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import * as toast from "../utils/toast";
+import * as toast from "../../utils/toast";
 
 const SignIn = () => {
   const dispatch = useDispatch();

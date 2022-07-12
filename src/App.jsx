@@ -5,11 +5,11 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectUser } from "./store/user";
 
-import Home from "./pages/Home";
-import NotFound from "./pages/NotFound";
-import Login from "./pages/Login";
+import Home from "./pages/home";
+import NotFound from "./pages/notFound";
+import Login from "./pages/login";
 
-import Dashboard from "./components/admin/Dashboard";
+import Dashboard from "./pages/dashboard";
 import Header from "./components/header";
 import Footer from "./components/footer";
 

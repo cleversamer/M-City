@@ -1,4 +1,4 @@
-import AdminNav from "../components/admin/AdminNav";
+import AdminNav from "../components/admin/nav";
 
 const AdminLayout = (props) => {
   return (
