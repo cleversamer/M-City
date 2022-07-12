@@ -25,6 +25,7 @@ const teamsRef = collection(db, "/teams");
 
 export const matchesQuery = query(matchesRef);
 export const playersQuery = query(playersRef);
+export const positionsQuery = query(positionsRef);
 
 export const auth = getAuth(app);
 

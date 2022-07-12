@@ -12,6 +12,7 @@ import Dashboard from "./pages/admin/dashboard";
 import Players from "./pages/admin/players";
 import AddEditPlayer from "./pages/admin/players/AddEditPlayer";
 import Team from "./pages/team";
+import Matches from "./pages/matches";
 
 import Header from "./components/header";
 import Footer from "./components/footer";
@@ -51,6 +52,7 @@ const App = ({ store }) => {
 
       <Routes>
         {user && adminRoutes}
+        <Route path={config.routes.matches} element={<Matches />} />
         <Route path={config.routes.team} element={<Team />} />
         <Route path={config.routes.login} element={<Login />} />
         <Route path={config.routes.notFound} element={<NotFound />} />
