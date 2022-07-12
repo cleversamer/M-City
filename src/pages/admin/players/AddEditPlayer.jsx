@@ -51,7 +51,8 @@ const AddEditPlayers = () => {
     },
   });
 
-  const getDocRef = () => doc(db, `/players/${params.playerid}`);
+  const getDocRef = () =>
+    doc(db, `/players/${params[config.routes.editPlayer.param]}`);
 
   const submitForm = (values) => {
     let dataToSubmit = values;
@@ -82,7 +83,7 @@ const AddEditPlayers = () => {
   };
 
   useEffect(() => {
-    const param = params.playerid;
+    const param = params[config.routes.editPlayer.param];
     if (param) {
       getDoc(getDocRef())
         .then((snapshot) => {
@@ -100,7 +101,7 @@ const AddEditPlayers = () => {
       setFormType("add");
       setValues(defaultValues);
     }
-  }, [params.playerid]);
+  }, [params[config.routes.editPlayer.param]]);
 
   return (
     <AdminLayout title={formType === "add" ? "Add player" : "Edit player"}>

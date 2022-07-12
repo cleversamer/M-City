@@ -18,7 +18,8 @@
     "addPlayer": "/admin_players/add_player",
     "editPlayer": {
       "route": "/admin_players/edit_player",
-      "path": "/admin_players/edit_player/:playerid"
+      "path": "/admin_players/edit_player/:playerid",
+      "param": "playerid"
     },
     "notFound": "/not_found"
   }
