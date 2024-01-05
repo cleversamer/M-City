@@ -38,7 +38,7 @@ Full tech stack [here](/techstack.md)
 # Tech Stack File
 ![](https://img.stackshare.io/repo.svg "repo") [cleversamerr/M-City](https://github.com/cleversamerr/M-City)![](https://img.stackshare.io/public_badge.svg "public")
 <br/><br/>
-|18<br/>Tools used|12/24/23 <br/>Report generated|
+|19<br/>Tools used|01/05/24 <br/>Report generated|
 |------|------|
 </div>
 
@@ -164,9 +164,9 @@ Full tech stack [here](/techstack.md)
 </table>
 
 
-## <img src='https://img.stackshare.io/group.svg' /> Open source packages (6)</h2>
+## <img src='https://img.stackshare.io/group.svg' /> Open source packages (7)</h2>
 
-## <img width='24' height='24' src='https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png'/> npm (6)
+## <img width='24' height='24' src='https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png'/> npm (7)
 
 |NAME|VERSION|LAST UPDATED|LAST UPDATED BY|LICENSE|VULNERABILITIES|
 |:------|:------|:------|:------|:------|:------|
@@ -176,6 +176,7 @@ Full tech stack [here](/techstack.md)
 |[react-router-dom](https://www.npmjs.com/react-router-dom)|v6.3.0|07/11/22|Samer A |MIT|N/A|
 |[react-scripts](https://www.npmjs.com/react-scripts)|v5.0.0|07/11/22|Samer A |MIT|N/A|
 |[react-toastify](https://www.npmjs.com/react-toastify)|v9.0.5|07/11/22|Samer A |MIT|N/A|
+|[yup](https://www.npmjs.com/yup)|v0.32.11|07/09/22|Samer A |MIT|N/A|
 
 <br/>
 <div align='center'>
